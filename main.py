@@ -1,5 +1,5 @@
 import flet as ft
-from ui.pages.signin import Signin
+from ui.pages.signin.main_signin import Signin
 
 def main(page: ft.Page):
     Signin(page)
