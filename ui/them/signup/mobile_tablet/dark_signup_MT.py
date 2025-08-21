@@ -1,6 +1,19 @@
 import flet as ft
 
-DARK = {
+DARK_SIGNUP_MT = {
+
+
+
+    "change_them_button": {
+        "button": {
+            "icon": ft.Icons.LIGHT_MODE_OUTLINED,
+            "icon_color": "#e7e8e9"
+        },
+        "container": {
+            "bgcolor": "#080809"
+        }
+    },
+
     "appbar": {
         "change_them_button": {
             "button": {

@@ -1,6 +1,6 @@
 import flet as ft
 
-DARK = {
+DARK_SIGNUP_G = {
     "main_container": {
         "gradient_color": ["#020202", "#101829", "#1E2837", "#313D4F"]
     },

@@ -1,6 +1,7 @@
 import flet as ft
 from ui.them.signup.desktop import dark_signup_D, light_signup_D
 from ui.them.signup.mobile_tablet import dark_signup_MT, ligth_signup_MT
+from ui.them.signup.global_ import dark_signup_G, light_signup_G
 
 class GlobalSignupWidgets:
     def __init__(self, color_mode: str, page: ft.Page, device: str):
@@ -12,8 +13,10 @@ class GlobalSignupWidgets:
         self.colors = ""
 
         if self.device == "desktop":
-            self.colors = dark_signup_D.DARK if self.color_mode == "dark" else light_signup_D.LIGHT
-        else: self.colors = dark_signup_MT.DARK if self.color_mode == "dark" else ligth_signup_MT.LIGHT
+            self.colors = dark_signup_D.DARK_SIGNUP_D if self.color_mode == "dark" else light_signup_D.LIGHT_SIGNUP_D
+        else: self.colors = dark_signup_MT.DARK_SIGNUP_MT if self.color_mode == "dark" else ligth_signup_MT.LIGHT_SIGNUP_MT
+
+        self.global_colors = dark_signup_G.DARK_SIGNUP_G if self.color_mode == "dark" else light_signup_G.LIGHT_SIGNUP_G
 
         self.base_widgets()
 
@@ -39,7 +42,7 @@ class GlobalSignupWidgets:
             on_hover=lambda e:
 
             setattr(self.change_them_button_container, "scale", 1.1 if e.data == "true" else 1)
-            or setattr(self.change_them_button_container, "bgcolor", "#686c74" if e.data == "true" else "#525860")
+            or setattr(self.change_them_button_container, "bgcolor", "" if e.data == "true" else "#525860")
             or self.page.update()
         )
 
@@ -50,10 +53,10 @@ class GlobalSignupWidgets:
         """
         self.signup_widgets_repository = ft.Column(controls=[])
 
-        self.background = ft.RadialGradient(
-            colors=self.colors["main_container"]["gradient_color"],
-            center=ft.alignment.top_left,
-            radius=2
+        self.background = ft.LinearGradient(
+            colors=self.global_colors["main_container"]["gradient_color"],
+            begin=ft.alignment.top_left,
+            end=ft.alignment.bottom_right
         )
 
         self.signup_container = ft.Container(
@@ -72,7 +75,8 @@ class GlobalSignupWidgets:
         )
 
         self.signup_column = ft.Column(
-            controls=[self.signup_container]
+            controls=[self.signup_container],
+            alignment=ft.MainAxisAlignment.CENTER
         )
 
         self.main_container = ft.Container(
@@ -90,10 +94,27 @@ class GlobalSignupWidgets:
 
         # update colors variable
         self.color_mode = self.page.platform_brightness.value
-        self.colors = dark_signup_G.DARK if self.color_mode == "dark" else light_signup_G.LIGHT
+        self.global_colors = dark_signup_G.DARK_SIGNUP_G if self.color_mode == "dark" else light_signup_G.LIGHT_SIGNUP_G
 
         # update active widgets color
-        self.background.colors = self.colors["main_container"]["gradient_color"]
-        self.signup_container.bgcolor = self.colors["signup_container"]["bgcolor"]
-        self.signup_container.border = self.colors["signup_container"]["border"]
+        self.background.colors = self.global_colors["main_container"]["gradient_color"]
+        self.signup_container.bgcolor = self.global_colors["signup_container"]["bgcolor"]
+        self.signup_container.border = self.global_colors["signup_container"]["border"]
+
+        # update modular widgets color
+        if self.page.width >= 1200:
+            self.device = "desktop"
+        elif self.page.width >= 650:
+            self.device = "tablet"
+        else:
+            self.device = "mobile"
+
+        if self.device == "desktop":
+            self.colors = dark_signup_D.DARK_SIGNUP_D if self.color_mode == "dark" else light_signup_D.LIGHT_SIGNUP_D
+        else: self.colors = dark_signup_MT.DARK_SIGNUP_MT if self.color_mode == "dark" else ligth_signup_MT.LIGHT_SIGNUP_MT
+
+        self.change_them_button.icon = self.colors["change_them_button"]["button"]["icon"]
+        self.change_them_button.icon_colo = self.colors["change_them_button"]["button"]["icon_color"]
+        self.change_them_button_container.bgcolor = self.colors["change_them_button"]["container"]["bgcolor"]
+
         self.page.update()

@@ -1,6 +1,6 @@
 import flet as ft
 
-LIGHT = {
+LIGHT_SIGNUP_G = {
     "main_container": {
         "gradient_color": [ "#f0f9ff", "#f0f9ff", "#dbeafe", "#93c5fd", "#73a6fa"]
     },
