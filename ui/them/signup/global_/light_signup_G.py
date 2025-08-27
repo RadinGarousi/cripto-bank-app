@@ -2,7 +2,14 @@ import flet as ft
 
 LIGHT_SIGNUP_G = {
     "main_container": {
-        "gradient_color": [ "#f0f9ff", "#f0f9ff", "#dbeafe", "#93c5fd", "#73a6fa"]
+        "gradient_color": ["#fafbfc", "#3884f5"]
+    },
+
+    "change_them_button": {
+        "button": {
+            "icon": ft.Icons.DARK_MODE_OUTLINED,
+            "icon_color": "#737986"
+        }
     },
 
     "signup_container": {

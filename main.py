@@ -1,8 +1,8 @@
 import flet as ft
-from ui.pages.signin.main_signin import Signin
+from ui.pages.signup.main_signup import MainSignup
 
 def main(page: ft.Page):
-    Signin(page)
+    MainSignup(page)
 
 if __name__=="__main__":
     ft.app(target=main)

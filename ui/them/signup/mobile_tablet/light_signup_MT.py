@@ -1,13 +1,10 @@
 import flet as ft
 
-LIGHT_SIGNUP_D = {
-
+LIGHT_SIGNUP_MT = {
     "change_them_button": {
         "container": {
-            "bgcolor": ft.Colors.WHITE38,
-            "hover": ft.Colors.WHITE60,
+            "bgcolor": ft.Colors.RED,
             "border": ft.border.all(1.5, ft.Colors.WHITE70)
         }
-    },
-
+    }
 }
