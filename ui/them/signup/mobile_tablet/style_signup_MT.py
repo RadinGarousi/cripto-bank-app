@@ -10,10 +10,13 @@ STYLE_SIGNUP_MT = {
         }
     },
 
-    "signup_container": {"height": 100, "padding": 0},
+    "signup_container": {"height": 100, "padding": 0, "offset": ft.Offset(0, 1.5)},
 
     "appbar": {
-
-        "alignment": ft.MainAxisAlignment.START
+        "height": 100,
+        "opacity": 0,
+        "scale": ft.Scale(scale=0.5),
+        "offset": ft.Offset(0, -1),
+        "bgcolor": ft.Colors.PURPLE
     }
 }

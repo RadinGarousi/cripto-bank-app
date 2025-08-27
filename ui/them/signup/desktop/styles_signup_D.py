@@ -21,7 +21,7 @@ STYLE_SIGNUP_D = {
         "padding": {"vertical": 100, "horizontal": 75}
     },
 
-    "signup_container": {"height": 700, "padding": 30},
+    "signup_container": {"height": 700, "padding": 30, "offset": ft.Offset(2, 0)},
 
     "change_them_button": {
         "container": {

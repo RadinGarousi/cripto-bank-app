@@ -1,8 +1,8 @@
 import flet as ft
 from ui.them.signup.desktop import dark_signup_D, light_signup_D, styles_signup_D
-from ui.them.signup.mobile_tablet import dark_signup_MT, light_signup_MT, style_signup_MT
-from ui.them.signup.global_ import dark_signup_G, light_signup_G, style_signup_G
-import database.json.code.signup.signup_base_data as signup_base_data
+from ui.them.signup.mobile_tablet import dark_signup_MT, light_signup_MT
+from ui.them.signup.global_ import dark_signup_G, light_signup_G
+import database.json.signup_base_data as signup_base_data
 
 class GlobalSignupWidgets:
     def __init__(self, page: ft.Page, styles, global_styles):
@@ -65,12 +65,14 @@ class GlobalSignupWidgets:
             border_radius=self.global_styles["signup_container"]["border_radius"],
             padding=self.styles["signup_container"]["padding"],
             opacity=self.global_styles["signup_container"]["opacity"],
-            scale=self.global_styles["signup_container"]["scale"],
+            offset=self.styles["signup_container"]["offset"],
             bgcolor=self.global_colors["signup_container"]["bgcolor"],
             border=self.global_colors["signup_container"]["border"],
             blur=self.global_styles["signup_container"]["blur"],
-            animate_opacity=self.global_styles["signup_container"]["animate"],
-            animate_scale=self.global_styles["signup_container"]["animate"],
+            animate_opacity=self.global_styles["animate"],
+            animate_scale=self.global_styles["animate"],
+            animate_offset=self.global_styles["offset_animate"],
+            animate_size=self.global_styles["animate"],
             content=self.signup_widgets_repository
         )
 
@@ -86,6 +88,7 @@ class GlobalSignupWidgets:
                 self.styles["main_container"]["padding"]["horizontal"]
             ),
             content=self.main_container_elements_repository,
+            alignment=ft.alignment.center,
             expand=True
         )
 
@@ -93,10 +96,10 @@ class GlobalSignupWidgets:
 
         self.background_container = ft.Container(
             gradient=self.background,
-            alignment=ft.alignment.center_right,
+            alignment=ft.alignment.center,
             content=self.background_container_elements_repository,
             expand=True,
-            animate=500
+            animate_size=self.global_styles["animate"]
         )
 
         self.signup_widgets()
