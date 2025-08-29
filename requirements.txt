@@ -1,0 +1,6 @@
+flet[all]==0.28.3   # UI framework
+mysql-connector-python==9.4.0   # Database connector
+
+# optional packages
+countryinfo==0.1.2
+langcodes==3.5.0

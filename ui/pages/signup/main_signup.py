@@ -32,14 +32,14 @@ class MainSignup:
         self.page.padding = 0
 
         # Detecting the user's device by monitor resolution
-        signup_base_data.insert("system", self.page.platform_brightness.value, detect_device(self.page), self.last_device)
+        signup_base_data.insert("system", self.page.platform_brightness.value, detect_device(self.page), self.last_device, "ltr")
         self.last_device = signup_base_data.reade()["user_device"]
 
         self.styles = styles_signup_D.STYLE_SIGNUP_D if signup_base_data.reade()["user_device"] == "desktop" else style_signup_MT.STYLE_SIGNUP_MT
         self.global_styles = style_signup_G.STYLE_SIGNUP_G
 
-        self.global_widgets = global_signup.GlobalSignupWidgets(self.page, self.styles, self.global_styles)
-        self.mobile_tablet_widgets = mobile_tablet_signup.MobileSignupWidgets(self.global_widgets, self.global_styles)
+        self.global_widgets = global_signup.GlobalSignupWidgets(self.page)
+        self.mobile_tablet_widgets = mobile_tablet_signup.MobileSignupWidgets(self.page, self.global_styles)
         self.page.on_platform_brightness_change = self.global_widgets.change_them
         self.page.on_resized = self.resize
         self.place_item()
@@ -115,7 +115,6 @@ class MainSignup:
 
             self.global_widgets.signup_container.height = self.styles["signup_container"]["height"]
             self.global_widgets.signup_container.padding = self.styles["signup_container"]["padding"]
-            # self.global_widgets.signup_container.opacity = self.global_styles["signup_container"]["opacity"]
 
             self.global_widgets.main_container.padding = ft.padding.symmetric(
                     self.styles["main_container"]["padding"]["vertical"],

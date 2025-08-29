@@ -1,4 +1,6 @@
 import  flet as ft
+# from ui.pages.signup.global_signup import GlobalSignupWidgets
+
 STYLE_SIGNUP_MT = {
     "main_container": {"padding": {"vertical": 20, "horizontal": 20}},
 
@@ -6,7 +8,7 @@ STYLE_SIGNUP_MT = {
         "container": {
             "width": 30,
             "height": 30,
-            "border_radius": 40
+            "border_radius": 1
         }
     },
 

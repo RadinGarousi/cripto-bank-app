@@ -1,11 +1,11 @@
 import flet as ft
 from ui.them.signup.desktop import dark_signup_D, light_signup_D, styles_signup_D
-from ui.them.signup.mobile_tablet import dark_signup_MT, light_signup_MT
-from ui.them.signup.global_ import dark_signup_G, light_signup_G
+from ui.them.signup.mobile_tablet import dark_signup_MT, light_signup_MT, style_signup_MT
+from ui.them.signup.global_ import dark_signup_G, light_signup_G, style_signup_G
 import database.json.signup_base_data as signup_base_data
 
 class GlobalSignupWidgets:
-    def __init__(self, page: ft.Page, styles, global_styles):
+    def __init__(self, page: ft.Page):
         """Initializes global signup widgets based on the system color mode (dark or light)"""
 
         self.page = page
@@ -14,8 +14,8 @@ class GlobalSignupWidgets:
         else:
             self.colors = dark_signup_MT.DARK_SIGNUP_MT if signup_base_data.reade()["color_mode"] == "dark" else light_signup_MT.LIGHT_SIGNUP_MT
         self.global_colors = dark_signup_G.DARK_SIGNUP_G if signup_base_data.reade()["color_mode"] == "dark" else light_signup_G.LIGHT_SIGNUP_G
-        self.styles = styles
-        self.global_styles = global_styles
+        self.styles = self.styles = styles_signup_D.STYLE_SIGNUP_D if signup_base_data.reade()["user_device"] == "desktop" else style_signup_MT.STYLE_SIGNUP_MT
+        self.global_styles = style_signup_G.STYLE_SIGNUP_G
 
 
         self.base_widgets()
@@ -99,7 +99,8 @@ class GlobalSignupWidgets:
             alignment=ft.alignment.center,
             content=self.background_container_elements_repository,
             expand=True,
-            animate_size=self.global_styles["animate"]
+            animate_size=self.global_styles["animate"],
+            animate=500
         )
 
         self.signup_widgets()

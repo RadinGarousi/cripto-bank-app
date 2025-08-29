@@ -37,3 +37,6 @@ CREATE TABLE IF NOT EXISTS appearance(
     FOREIGN KEY(user_id) REFERENCES users_accounts(id)
 )
 """)
+
+connect_database.commit()
+connect_database.close()
